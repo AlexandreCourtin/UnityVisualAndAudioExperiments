@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class One_MusicAssigner : MonoBehaviour
+public class One_Controller : MonoBehaviour
 {
     public AudioClip[] musics;
-    public int actualmusic = -1;
+    public int actualmusic = 0;
 
     AudioSource audioSource;
 
@@ -13,6 +13,7 @@ public class One_MusicAssigner : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         if (musics.Length > 0) {
+            actualmusic -= 1;
             changeMusic();
         }
     }
