@@ -34,8 +34,8 @@ public class One_CircleVisualizer : MonoBehaviour
             cubes[i].AddComponent<SpriteRenderer>();
             cubes[i].GetComponent<SpriteRenderer>().sprite = soundSprite;
             cubes[i].GetComponent<SpriteRenderer>().material = soundMat;
-            cubes[i].transform.position = new Vector3(radius * Mathf.Sin(i * .6f * Mathf.Deg2Rad), radius * Mathf.Cos(i * .6f * Mathf.Deg2Rad), 0f);
-            cubes[i].transform.eulerAngles = new Vector3(0f, 0f, -i * .6f);
+            cubes[i].transform.position = new Vector3(radius * Mathf.Sin(i * .61f * Mathf.Deg2Rad), radius * Mathf.Cos(i * .61f * Mathf.Deg2Rad), 0f);
+            cubes[i].transform.eulerAngles = new Vector3(0f, 0f, -i * .61f);
             cubes[i].transform.parent = transform;
             orPosition[i] = cubes[i].transform.position;
 
@@ -43,8 +43,8 @@ public class One_CircleVisualizer : MonoBehaviour
             cubes2[i].AddComponent<SpriteRenderer>();
             cubes2[i].GetComponent<SpriteRenderer>().sprite = soundSprite;
             cubes2[i].GetComponent<SpriteRenderer>().material = soundMat;
-            cubes2[i].transform.position = new Vector3(radius * -Mathf.Sin(i * .6f * Mathf.Deg2Rad), radius * Mathf.Cos(i * .6f * Mathf.Deg2Rad), 0f);
-            cubes2[i].transform.eulerAngles = new Vector3(0f, 0f, i * .6f);
+            cubes2[i].transform.position = new Vector3(radius * -Mathf.Sin(i * .61f * Mathf.Deg2Rad), radius * Mathf.Cos(i * .61f * Mathf.Deg2Rad), 0f);
+            cubes2[i].transform.eulerAngles = new Vector3(0f, 0f, i * .61f);
             cubes2[i].transform.parent = transform;
             orPosition2[i] = cubes2[i].transform.position;
         }

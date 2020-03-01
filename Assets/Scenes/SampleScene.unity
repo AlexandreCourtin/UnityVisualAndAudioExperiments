@@ -544,23 +544,36 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6604776ff8b764b05833beb3629f78b0, type: 3}
   - {fileID: 8300000, guid: bd8050c7fd3704e9dad9d86929831022, type: 3}
   - {fileID: 8300000, guid: 6ff8330dc1a9d49e3ab57513ae3ff015, type: 3}
+  - {fileID: 8300000, guid: 50295f08162514f09b74cb4e046f99d1, type: 3}
   circles:
   - {fileID: 1724056002}
   - {fileID: 1724056006}
   oneColorsIntensity:
   - {x: 8000, y: 0, z: 0}
   - {x: 8000, y: 0, z: 8000}
+  - {x: 0, y: 8000, z: 0}
+  - {x: 8000, y: 0, z: 0}
+  - {x: 0, y: 0, z: 6000}
   twoColorsIntensity:
   - {x: 0, y: 0, z: 8000}
   - {x: 0, y: 8000, z: 8000}
+  - {x: 8000, y: 0, z: 0}
+  - {x: 6000, y: 2000, z: 2000}
+  - {x: 0, y: 6000, z: 0}
   oneColorsMin:
   - {x: 7000, y: 1000, z: 1000}
   - {x: 3000, y: 1000, z: 7000}
+  - {x: 1000, y: 4000, z: 4000}
+  - {x: 6000, y: 2000, z: 2000}
+  - {x: 200, y: 200, z: 400}
   twoColorsMin:
   - {x: 1000, y: 1000, z: 7000}
   - {x: 3000, y: 7000, z: 1000}
-  actualMusic: 2
-  actualColor: 1
+  - {x: 4000, y: 4000, z: 1000}
+  - {x: 0, y: 0, z: 0}
+  - {x: 200, y: 400, z: 200}
+  actualMusic: 0
+  actualColor: 0
 --- !u!114 &1724056006
 MonoBehaviour:
   m_ObjectHideFlags: 0
