@@ -25,6 +25,7 @@ public class AudioPeer : MonoBehaviour
     public float colorPower = 100000f;
 
     public float[] samples = new float[512];
+    public float[] tmpSamples = new float[512];
     public GameObject[] cubes = new GameObject[300];
     public GameObject[] cubes2 = new GameObject[300];
     public GameObject[] cubes3 = new GameObject[300];
@@ -42,11 +43,9 @@ public class AudioPeer : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         float radius = 4.5f;
-        float radius2 = 4.5f;
+        float radius2 = 4.6f;
 
-        for (int i = 1 ; i < max ; i++) {
-            // int j = ShuffleI(i, max);
-
+        for (int i = 0 ; i < max ; i++) {
             cubes[i] = new GameObject("cube" + i);
             cubes[i].AddComponent<SpriteRenderer>();
             cubes[i].GetComponent<SpriteRenderer>().sprite = soundSprite;
@@ -88,18 +87,23 @@ public class AudioPeer : MonoBehaviour
     void FixedUpdate() {
         audioSource.GetSpectrumData(samples, 0, FFTWindow.Blackman);
 
-        for (int i = 1 ; i < max ; i++) {
-            // int j = ShuffleI(i, max);
+        tmpSamples = samples;
+        for (int i = 0 ; i < max ; i++) {
+            int j = ShuffleI(i, max);
+            samples[j] = tmpSamples[i];
 
-            float newLength = samples[i] * power * i * .5f;
+            float newLength = (samples[i] * power * j * .5f) * i * .001f;
 
-            if (newLength < currentLength[i]) {
+            if (newLength < .1f) {
+                currentLength[i] = .1f;
+            }
+            else if (newLength < currentLength[i]) {
                 currentLength[i] -= Time.fixedDeltaTime * 2f;
             }
             else {
                 currentLength[i] = newLength;
             }
-            Vector3 newScale = new Vector3(.5f, Mathf.Clamp(currentLength[i], .5f, 100f), 1f);
+            Vector3 newScale = new Vector3(.5f, Mathf.Clamp(currentLength[i], 0f, 100f), 1f);
 
             cubes[i].transform.position = orPosition[i] + cubes[i].transform.up * currentLength[i] * yFactor;
             cubes[i].transform.localScale = newScale;
