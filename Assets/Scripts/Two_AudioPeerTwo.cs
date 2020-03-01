@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent (typeof (AudioSource))]
-public class AudioPeerTwo : MonoBehaviour
+public class Two_AudioPeerTwo : MonoBehaviour
 {
     public Material soundMat;
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent (typeof (AudioSource))]
-public class AudioPeer : MonoBehaviour
+public class One_AudioPeer : MonoBehaviour
 {
     public Material soundMat;
     public Sprite soundSprite;
@@ -87,10 +87,10 @@ public class AudioPeer : MonoBehaviour
 
             float newLength = (samples[i] * power * j * .5f) * i * .001f;
 
-            // if (newLength < .1f) {
-            //     currentLength[i] = .1f;
-            // }
-            if (newLength < currentLength[i]) {
+            if (newLength < .1f) {
+                currentLength[i] = 0f;
+            }
+            else if (newLength < currentLength[i]) {
                 currentLength[i] -= Time.fixedDeltaTime * currentLength[i] * yFallOff;
             }
             else {
