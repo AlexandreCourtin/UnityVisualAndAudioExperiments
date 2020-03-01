@@ -15,10 +15,10 @@ public class One_CircleVisualizer : MonoBehaviour
     public float yFallOff = 2f;
     public float radius = 4.5f;
 
-    public float[] samples = new float[512];
-    public float[] tmpSamples = new float[512];
-    public GameObject[] cubes = new GameObject[300];
-    public GameObject[] cubes2 = new GameObject[300];
+    float[] samples = new float[512];
+    float[] tmpSamples = new float[512];
+    GameObject[] cubes = new GameObject[300];
+    GameObject[] cubes2 = new GameObject[300];
 
     AudioSource audioSource;
     Vector3[] orPosition = new Vector3[300];
@@ -43,8 +43,8 @@ public class One_CircleVisualizer : MonoBehaviour
             cubes2[i].AddComponent<SpriteRenderer>();
             cubes2[i].GetComponent<SpriteRenderer>().sprite = soundSprite;
             cubes2[i].GetComponent<SpriteRenderer>().material = soundMat;
-            cubes2[i].transform.position = new Vector3(radius * -Mathf.Sin(i * .6f * Mathf.Deg2Rad), radius * -Mathf.Cos(i * .6f * Mathf.Deg2Rad), 0f);
-            cubes2[i].transform.eulerAngles = new Vector3(0f, 0f, -i * .6f + 180f);
+            cubes2[i].transform.position = new Vector3(radius * -Mathf.Sin(i * .6f * Mathf.Deg2Rad), radius * Mathf.Cos(i * .6f * Mathf.Deg2Rad), 0f);
+            cubes2[i].transform.eulerAngles = new Vector3(0f, 0f, i * .6f);
             cubes2[i].transform.parent = transform;
             orPosition2[i] = cubes2[i].transform.position;
         }
@@ -61,7 +61,7 @@ public class One_CircleVisualizer : MonoBehaviour
             float newLength = (samples[i] * power * j * .5f) * i * .001f;
 
             if (newLength < .1f) {
-                currentLength[i] = 0f;
+                currentLength[i] = .3f;
             }
             else if (newLength < currentLength[i]) {
                 currentLength[i] -= Time.fixedDeltaTime * currentLength[i] * yFallOff;
