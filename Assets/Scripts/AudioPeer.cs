@@ -7,22 +7,15 @@ public class AudioPeer : MonoBehaviour
 {
     public Material soundMat;
     public Sprite soundSprite;
-    public float redIntensity;
-    public float greenIntensity;
-    public float blueIntensity;
-    public float redMin;
-    public float greenMin;
-    public float blueMin;
-    public float redIntensity2;
-    public float greenIntensity2;
-    public float blueIntensity2;
-    public float redMin2;
-    public float greenMin2;
-    public float blueMin2;
+    public Vector3 colorOneIntensity;
+    public Vector3 colorOneMin;
+    public Vector3 colorTwoIntensity;
+    public Vector3 colorTwoMin;
     public float yFactor = .5f;
     public float yFactor2 = .5f;
     public float power = 10f;
     public float colorPower = 100000f;
+    public float yFallOff = 2f;
 
     public float[] samples = new float[512];
     public float[] tmpSamples = new float[512];
@@ -94,11 +87,11 @@ public class AudioPeer : MonoBehaviour
 
             float newLength = (samples[i] * power * j * .5f) * i * .001f;
 
-            if (newLength < .1f) {
-                currentLength[i] = .1f;
-            }
-            else if (newLength < currentLength[i]) {
-                currentLength[i] -= Time.fixedDeltaTime * 2f;
+            // if (newLength < .1f) {
+            //     currentLength[i] = .1f;
+            // }
+            if (newLength < currentLength[i]) {
+                currentLength[i] -= Time.fixedDeltaTime * currentLength[i] * yFallOff;
             }
             else {
                 currentLength[i] = newLength;
@@ -115,16 +108,16 @@ public class AudioPeer : MonoBehaviour
             cubes4[i].transform.position = orPosition4[i] + cubes4[i].transform.up * currentLength[i] * yFactor2;
             cubes4[i].transform.localScale = newScale;
 
-            float redColor = samples[i] * redIntensity + redMin * Mathf.Clamp(1f - samples[i], 0f, 1f);
-            float greenColor = samples[i] * greenIntensity + greenMin * Mathf.Clamp(1f - samples[i], 0f, 1f);
-            float blueColor = samples[i] * blueIntensity + blueMin * Mathf.Clamp(1f - samples[i], 0f, 1f);
+            float redColor = samples[i] * colorOneIntensity.x + colorOneMin.x * Mathf.Clamp(1f - samples[i], 0f, 1f);
+            float greenColor = samples[i] * colorOneIntensity.y + colorOneMin.y * Mathf.Clamp(1f - samples[i], 0f, 1f);
+            float blueColor = samples[i] * colorOneIntensity.z + colorOneMin.z * Mathf.Clamp(1f - samples[i], 0f, 1f);
             Color newColor = new Color(Mathf.Clamp(redColor, 0f, colorPower), Mathf.Clamp(greenColor, 0f, colorPower), Mathf.Clamp(blueColor, 0f, colorPower), Mathf.Clamp(samples[i], .00005f, 1f));
             cubes[i].GetComponent<SpriteRenderer>().material.SetColor("_MainColor", newColor);
             cubes2[i].GetComponent<SpriteRenderer>().material.SetColor("_MainColor", newColor);
 
-            redColor = samples[i] * redIntensity2 + redMin2 * Mathf.Clamp(1f - samples[i], 0f, 1f);
-            greenColor = samples[i] * greenIntensity2 + greenMin2 * Mathf.Clamp(1f - samples[i], 0f, 1f);
-            blueColor = samples[i] * blueIntensity2 + blueMin2 * Mathf.Clamp(1f - samples[i], 0f, 1f);
+            redColor = samples[i] * colorTwoIntensity.x + colorTwoMin.x * Mathf.Clamp(1f - samples[i], 0f, 1f);
+            greenColor = samples[i] * colorTwoIntensity.y + colorTwoMin.y * Mathf.Clamp(1f - samples[i], 0f, 1f);
+            blueColor = samples[i] * colorTwoIntensity.z + colorTwoMin.z * Mathf.Clamp(1f - samples[i], 0f, 1f);
             newColor = new Color(Mathf.Clamp(redColor, 0f, colorPower), Mathf.Clamp(greenColor, 0f, colorPower), Mathf.Clamp(blueColor, 0f, colorPower), Mathf.Clamp(samples[i], .00005f, 1f));
             cubes3[i].GetComponent<SpriteRenderer>().material.SetColor("_MainColor", newColor);
             cubes4[i].GetComponent<SpriteRenderer>().material.SetColor("_MainColor", newColor);
