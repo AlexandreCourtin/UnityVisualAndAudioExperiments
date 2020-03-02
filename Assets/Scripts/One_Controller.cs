@@ -28,6 +28,7 @@ public class One_Controller : MonoBehaviour
         if (musics.Length > 0) {
             actualMusic -= 1;
             actualColor -= 1;
+            actualPattern -= 1;
             changeMusic();
             changeColors();
             changePattern();
