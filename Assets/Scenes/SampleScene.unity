@@ -576,7 +576,7 @@ MonoBehaviour:
   powersOne:
   - 20
   - 10
-  - 15
+  - 25
   powersTwo:
   - 20
   - 20
