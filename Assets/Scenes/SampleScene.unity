@@ -564,13 +564,13 @@ MonoBehaviour:
   oneColorsMin:
   - {x: 7000, y: 1000, z: 1000}
   - {x: 3000, y: 1000, z: 7000}
-  - {x: 500, y: 1500, z: 1000}
+  - {x: 300, y: 3000, z: 500}
   - {x: 6000, y: 2000, z: 2000}
   - {x: 200, y: 200, z: 400}
   twoColorsMin:
   - {x: 1000, y: 1000, z: 7000}
   - {x: 3000, y: 7000, z: 1000}
-  - {x: 4000, y: 2000, z: 1000}
+  - {x: 3000, y: 1000, z: 500}
   - {x: 0, y: 0, z: 0}
   - {x: 200, y: 400, z: 200}
   powersOne:
@@ -597,9 +597,9 @@ MonoBehaviour:
   - 5
   - 5
   - 5
-  actualMusic: 0
-  actualColor: 0
-  actualPattern: 0
+  actualMusic: 4
+  actualColor: 2
+  actualPattern: 2
 --- !u!114 &1724056006
 MonoBehaviour:
   m_ObjectHideFlags: 0
