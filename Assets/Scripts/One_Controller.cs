@@ -10,8 +10,15 @@ public class One_Controller : MonoBehaviour
     public Vector3[] twoColorsIntensity;
     public Vector3[] oneColorsMin;
     public Vector3[] twoColorsMin;
+    public float[] powersOne;
+    public float[] powersTwo;
+    public float[] yFactorsOne;
+    public float[] yFactorsTwo;
+    public float[] yFallOffOne;
+    public float[] yFallOffTwo;
     public int actualMusic = 0;
     public int actualColor = 0;
+    public int actualPattern = 0;
 
     AudioSource audioSource;
 
@@ -23,6 +30,7 @@ public class One_Controller : MonoBehaviour
             actualColor -= 1;
             changeMusic();
             changeColors();
+            changePattern();
         }
     }
 
@@ -32,6 +40,9 @@ public class One_Controller : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.C)) {
             changeColors();
+        }
+        if (Input.GetKeyDown(KeyCode.P)) {
+            changePattern();
         }
     }
 
@@ -53,5 +64,18 @@ public class One_Controller : MonoBehaviour
         circles[0].colorMin = oneColorsMin[actualColor];
         circles[1].colorIntensity = twoColorsIntensity[actualColor];
         circles[1].colorMin = twoColorsMin[actualColor];
+    }
+
+    private void changePattern() {
+        actualPattern += 1;
+        if (actualPattern >= powersOne.Length) {
+            actualPattern = 0;
+        }
+        circles[0].power = powersOne[actualPattern];
+        circles[0].yFactor = yFactorsOne[actualPattern];
+        circles[0].yFallOff = yFallOffOne[actualPattern];
+        circles[1].power = powersTwo[actualPattern];
+        circles[1].yFactor = yFactorsTwo[actualPattern];
+        circles[1].yFallOff = yFallOffTwo[actualPattern];
     }
 }

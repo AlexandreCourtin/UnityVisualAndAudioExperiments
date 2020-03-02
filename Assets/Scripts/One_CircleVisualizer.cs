@@ -50,7 +50,7 @@ public class One_CircleVisualizer : MonoBehaviour
         }
     }
 
-    void FixedUpdate() {
+    void Update() {
         audioSource.GetSpectrumData(samples, 0, FFTWindow.Blackman);
 
         tmpSamples = samples;
@@ -64,7 +64,7 @@ public class One_CircleVisualizer : MonoBehaviour
                 currentLength[i] = .3f;
             }
             else if (newLength < currentLength[i]) {
-                currentLength[i] -= Time.fixedDeltaTime * currentLength[i] * yFallOff;
+                currentLength[i] -= Time.deltaTime * currentLength[i] * yFallOff;
             }
             else {
                 currentLength[i] = newLength;
