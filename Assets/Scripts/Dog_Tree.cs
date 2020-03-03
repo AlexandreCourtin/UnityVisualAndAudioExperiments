@@ -17,18 +17,15 @@ public class Dog_Tree : MonoBehaviour
     }
 
     void Update() {
-        float newHeight = 1.5f - music.samples[randomSample] * 5f;
+        float newHeight = 1.5f - music.samples[randomSample] * 3f;
 
         if (newHeight < currentHeight) {
-            currentHeight = newHeight;
+            currentHeight -= music.samples[randomSample] * 3f;
         } else if (currentHeight < 1.5f) {
-            currentHeight += Time.deltaTime * 2f;
+            currentHeight += Time.deltaTime * 1f;
         }
 
-        if (currentHeight > 1.5f) {
-            currentHeight = 1.5f;
-        }
-
+        currentHeight = Mathf.Clamp(currentHeight, .1f, 1.5f);
         transform.localScale = new Vector3(transform.localScale.x, currentHeight, transform.localScale.z);
     }
 }
