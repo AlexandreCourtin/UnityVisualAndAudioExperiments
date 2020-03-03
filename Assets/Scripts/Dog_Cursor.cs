@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Dog_Cursor : MonoBehaviour
 {
-    public float reactionTime = 5f;
+    public float reactionTime = 20f;
 
     public Vector3 mousePosition;
 
