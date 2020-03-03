@@ -577,29 +577,35 @@ MonoBehaviour:
   - 20
   - 10
   - 25
+  - 20
   powersTwo:
   - 20
   - 20
   - 25
+  - 10
   yFactorsOne:
   - -0.5
   - -1
   - 0.15
+  - -1
   yFactorsTwo:
   - 0.25
   - 0
   - -0.15
+  - -0.5
   yFallOffOne:
   - 5
   - 1
   - 5
+  - 1
   yFallOffTwo:
   - 5
   - 5
   - 5
-  actualMusic: 4
-  actualColor: 2
-  actualPattern: 2
+  - 5
+  actualMusic: 0
+  actualColor: 0
+  actualPattern: 0
 --- !u!114 &1724056006
 MonoBehaviour:
   m_ObjectHideFlags: 0
