@@ -184,7 +184,7 @@ VisualEffectResource:
       stripData = GetStripDataFromParticleIndex(index, PARTICLE_PER_STRIP_COUNT);\r\n           
       InitStripAttributes(index, attributes, stripData);\r\n#endif\r\n\t\t\t\r\n\t\t\t{\n\t\t\t   
       SetAttribute_AA7D7CD( /*inout */attributes.velocity,  /*inout */attributes.seed,
-      float3(0, -0.100000001, -0.200000003), float3(0, 0.100000001, 0.200000003));\n\t\t\t}\n\t\t\tEulerIntegration(
+      float3(0, -0.0500000007, -0.100000001), float3(0, 0.0500000007, 0.100000001));\n\t\t\t}\n\t\t\tEulerIntegration(
       /*inout */attributes.position, attributes.velocity, deltaTime_b);\n\t\t\tAge(
       /*inout */attributes.age, deltaTime_b);\n\t\t\tReap(attributes.age, attributes.lifetime, 
       /*inout */attributes.alive);\n\t\t\t\n\r\n\r\n\t\t\tif (attributes.alive)\r\n\t\t\t{\r\n\t\t\t\tattributeBuffer.Store3((index
@@ -215,8 +215,8 @@ VisualEffectResource:
       HAS_STRIPS\r\n        const StripData stripData = GetStripDataFromParticleIndex(index,
       PARTICLE_PER_STRIP_COUNT);\r\n        InitStripAttributes(index, attributes,
       stripData);\r\n#endif\r\n\t\t\r\n\t\t{\n\t\t    SetAttribute_AA7D7CD( /*inout
-      */attributes.velocity,  /*inout */attributes.seed, float3(0, -0.100000001,
-      -0.200000003), float3(0, 0.100000001, 0.200000003));\n\t\t}\n\t\tEulerIntegration(
+      */attributes.velocity,  /*inout */attributes.seed, float3(0, -0.0500000007,
+      -0.100000001), float3(0, 0.0500000007, 0.100000001));\n\t\t}\n\t\tEulerIntegration(
       /*inout */attributes.position, attributes.velocity, deltaTime_b);\n\t\tAge(
       /*inout */attributes.age, deltaTime_b);\n\t\tReap(attributes.age, attributes.lifetime, 
       /*inout */attributes.alive);\n\t\t\n\r\n\t\tattributeBuffer.Store3((index *
@@ -857,9 +857,9 @@ VisualEffectResource:
         - m_ExpressionIndex: 6
           m_Value: {x: 3, y: 0, z: 0}
         - m_ExpressionIndex: 9
-          m_Value: {x: 0, y: -0.1, z: -0.2}
+          m_Value: {x: 0, y: -0.05, z: -0.1}
         - m_ExpressionIndex: 10
-          m_Value: {x: 0, y: 0.1, z: 0.2}
+          m_Value: {x: 0, y: 0.05, z: 0.1}
       m_Vector4f:
         m_Array: []
       m_Uint:
@@ -877,17 +877,17 @@ VisualEffectResource:
             - serializedVersion: 3
               time: 0
               value: 0.08673096
-              inSlope: 0.22092251
-              outSlope: 0.22092251
+              inSlope: 0.081086725
+              outSlope: 0.081086725
               tangentMode: 34
               weightedMode: 0
               inWeight: 0
               outWeight: 0
             - serializedVersion: 3
-              time: 0.5541667
-              value: 0.20915885
-              inSlope: -0.027320214
-              outSlope: -0.027320214
+              time: 0.55
+              value: 0.13132866
+              inSlope: -0.009484358
+              outSlope: -0.009484358
               tangentMode: 34
               weightedMode: 0
               inWeight: 0
@@ -895,8 +895,8 @@ VisualEffectResource:
             - serializedVersion: 3
               time: 1
               value: 0.08630371
-              inSlope: -0.27556294
-              outSlope: -0.27556294
+              inSlope: -0.10005544
+              outSlope: -0.10005544
               tangentMode: 34
               weightedMode: 0
               inWeight: 0
@@ -2301,7 +2301,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.08673095703125,"inTangent":0.22092251479625703,"outTangent":0.22092251479625703,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false},{"time":0.5541666746139526,"value":0.20915885269641877,"inTangent":-0.027320213615894319,"outTangent":-0.027320213615894319,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false},{"time":1.0,"value":0.0863037109375,"inTangent":-0.27556294202804568,"outTangent":-0.27556294202804568,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
+      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.08673095703125,"inTangent":0.08108672499656677,"outTangent":0.08108672499656677,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false},{"time":0.550000011920929,"value":0.13132865726947785,"inTangent":-0.009484358131885529,"outTangent":-0.009484358131885529,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false},{"time":1.0,"value":0.0863037109375,"inTangent":-0.10005544126033783,"outTangent":-0.10005544126033783,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
     m_Space: 2147483647
   m_Property:
     name: Size
@@ -2839,7 +2839,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Vector, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"vector":{"x":0.0,"y":-0.10000000149011612,"z":-0.20000000298023225}}'
+      m_SerializableObject: '{"vector":{"x":0.0,"y":-0.05000000074505806,"z":-0.10000000149011612}}'
     m_Space: 0
   m_Property:
     name: A
@@ -3021,7 +3021,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEditor.VFX.Vector, Unity.VisualEffectGraph.Editor,
           Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"vector":{"x":0.0,"y":0.10000000149011612,"z":0.20000000298023225}}'
+      m_SerializableObject: '{"vector":{"x":0.0,"y":0.05000000074505806,"z":0.10000000149011612}}'
     m_Space: 0
   m_Property:
     name: B

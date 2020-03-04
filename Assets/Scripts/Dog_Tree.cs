@@ -13,21 +13,26 @@ public class Dog_Tree : MonoBehaviour
     void Start() {
         music = GameObject.Find("Music").GetComponent<Dog_Music>();
         randomSample = Random.Range(0, 100);
-        currentHeight = 1f;
+        currentHeight = 10f;
         transform.eulerAngles = new Vector3(0f, Random.Range(0f, 359f), 0f);
         transform.localScale = new Vector3(Random.Range(.8f, 1.2f), 1f, Random.Range(.8f, 1.2f));
     }
 
     void Update() {
-        float newHeight = 1f - music.samples[randomSample] - music.samples[randomSample + 1] - music.samples[randomSample + 2];
+        float newHeight = 10f - music.samples[randomSample] * 100f;
 
         if (newHeight < currentHeight) {
-            currentHeight -= music.samples[randomSample] * 2f;
-        } else if (currentHeight < 1f) {
-            currentHeight += Time.deltaTime * .5f + music.samples[randomSample] * .5f;
+            currentHeight = newHeight;
+        } else if (currentHeight < 10f) {
+            currentHeight += Time.deltaTime * music.samples[randomSample] * 1000f;
         }
 
-        currentHeight = Mathf.Clamp(currentHeight, .1f, 1f);
-        transform.localScale = new Vector3(transform.localScale.x, currentHeight, transform.localScale.z);
+        currentHeight = Mathf.Clamp(currentHeight, 5f, 10f);
+        transform.Find("Sphere1").localScale = new Vector3(currentHeight, currentHeight, currentHeight);
+        transform.Find("Sphere2").localScale = new Vector3(currentHeight, currentHeight, currentHeight);
+        transform.Find("Sphere3").localScale = new Vector3(currentHeight, currentHeight, currentHeight);
+        transform.Find("Sphere4").localScale = new Vector3(currentHeight, currentHeight, currentHeight);
+        transform.Find("Sphere5").localScale = new Vector3(currentHeight, currentHeight, currentHeight);
+        transform.Find("Sphere6").localScale = new Vector3(currentHeight, currentHeight, currentHeight);
     }
 }
