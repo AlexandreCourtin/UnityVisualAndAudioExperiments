@@ -4275,7 +4275,7 @@ GameObject:
   - component: {fileID: 365284170}
   - component: {fileID: 365284169}
   - component: {fileID: 365284173}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: DogBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6206,7 +6206,7 @@ GameObject:
   - component: {fileID: 560192855}
   - component: {fileID: 560192854}
   - component: {fileID: 560192853}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
