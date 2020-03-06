@@ -4275,6 +4275,7 @@ GameObject:
   - component: {fileID: 365284170}
   - component: {fileID: 365284169}
   - component: {fileID: 365284173}
+  - component: {fileID: 365284174}
   m_Layer: 8
   m_Name: DogBall
   m_TagString: Untagged
@@ -4350,7 +4351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365284168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.635, y: 0.81965345, z: -3.052}
+  m_LocalPosition: {x: 0.43, y: 0.5, z: -5.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4372,6 +4373,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &365284174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365284168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36ec39ec41e6441d6858841e49797261, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &369226909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3744666802577677903, guid: 4402ab3a60da94b8ab55bb331d763864,
@@ -8055,7 +8068,7 @@ Camera:
   m_GameObject: {fileID: 702687862}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.43867922, g: 0.7524455, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -8148,6 +8161,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reactionTime: 20
+  lay:
+    serializedVersion: 2
+    m_Bits: 512
   mousePosition: {x: 0, y: 0, z: 0}
 --- !u!114 &702687868
 MonoBehaviour:

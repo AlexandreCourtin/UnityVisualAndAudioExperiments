@@ -7,13 +7,15 @@ public class Dog_Controller : MonoBehaviour
     public float rotSpeed = 1f;
 
     Dog_Cursor cursor;
+    GameObject ball;
 
     void Start() {
         cursor = GameObject.Find("Camera").GetComponent<Dog_Cursor>();
+        ball = GameObject.Find("DogBall");
     }
 
     void FixedUpdate() {
-        DogLookAt(cursor.mousePosition);
+        DogLookAt(ball.transform.position);
     }
 
     private void DogLookAt(Vector3 target) {
