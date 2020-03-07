@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Dog_Ball : MonoBehaviour
 {
+    public bool isControllingBall;
+
     Dog_Cursor cursor;
     Rigidbody ballRb;
 
     void Start() {
+        isControllingBall = false;
         cursor = GameObject.Find("Camera").GetComponent<Dog_Cursor>();
         ballRb = GetComponent<Rigidbody>();
     }

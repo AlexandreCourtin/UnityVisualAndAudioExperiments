@@ -8,14 +8,26 @@ public class Dog_Controller : MonoBehaviour
 
     Dog_Cursor cursor;
     GameObject ball;
+    Dog_Ball dogball;
 
     void Start() {
         cursor = GameObject.Find("Camera").GetComponent<Dog_Cursor>();
         ball = GameObject.Find("DogBall");
+        dogball = ball.GetComponent<Dog_Ball>();
     }
 
     void FixedUpdate() {
-        DogLookAt(ball.transform.position);
+        // DogLookAt(ball.transform.position);
+        if (!dogball.isControllingBall) {
+            DogMovePosition(ball.transform.position);
+        } else {
+            DogMovePosition(Vector3.zero);
+        }
+    }
+
+    private void DogMovePosition(Vector3 target) {
+        DogLookAt(target);
+        transform.position = Vector3.Lerp(transform.position, target, Time.fixedDeltaTime * 2f);
     }
 
     private void DogLookAt(Vector3 target) {
