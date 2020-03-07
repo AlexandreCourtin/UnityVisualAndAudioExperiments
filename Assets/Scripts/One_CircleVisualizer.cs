@@ -17,14 +17,14 @@ public class One_CircleVisualizer : MonoBehaviour
 
     float[] samples = new float[512];
     float[] tmpSamples = new float[512];
-    GameObject[] cubes = new GameObject[300];
-    GameObject[] cubes2 = new GameObject[300];
+    GameObject[] cubes = new GameObject[200];
+    GameObject[] cubes2 = new GameObject[200];
 
     AudioSource audioSource;
-    Vector3[] orPosition = new Vector3[300];
-    Vector3[] orPosition2 = new Vector3[300];
-    float[] currentLength = new float[300];
-    int max = 300;
+    Vector3[] orPosition = new Vector3[200];
+    Vector3[] orPosition2 = new Vector3[200];
+    float[] currentLength = new float[200];
+    int max = 200;
 
     void Start() {
         audioSource = GetComponent<AudioSource>();
@@ -34,8 +34,8 @@ public class One_CircleVisualizer : MonoBehaviour
             cubes[i].AddComponent<SpriteRenderer>();
             cubes[i].GetComponent<SpriteRenderer>().sprite = soundSprite;
             cubes[i].GetComponent<SpriteRenderer>().material = soundMat;
-            cubes[i].transform.position = new Vector3(radius * Mathf.Sin(i * .61f * Mathf.Deg2Rad), radius * Mathf.Cos(i * .61f * Mathf.Deg2Rad), 0f);
-            cubes[i].transform.eulerAngles = new Vector3(0f, 0f, -i * .61f);
+            cubes[i].transform.position = new Vector3(radius * Mathf.Sin(i * .9025f * Mathf.Deg2Rad), radius * Mathf.Cos(i * .9025f * Mathf.Deg2Rad), 0f);
+            cubes[i].transform.eulerAngles = new Vector3(0f, 0f, -i * .9025f);
             cubes[i].transform.parent = transform;
             orPosition[i] = cubes[i].transform.position;
 
@@ -43,8 +43,8 @@ public class One_CircleVisualizer : MonoBehaviour
             cubes2[i].AddComponent<SpriteRenderer>();
             cubes2[i].GetComponent<SpriteRenderer>().sprite = soundSprite;
             cubes2[i].GetComponent<SpriteRenderer>().material = soundMat;
-            cubes2[i].transform.position = new Vector3(radius * -Mathf.Sin(i * .61f * Mathf.Deg2Rad), radius * Mathf.Cos(i * .61f * Mathf.Deg2Rad), 0f);
-            cubes2[i].transform.eulerAngles = new Vector3(0f, 0f, i * .61f);
+            cubes2[i].transform.position = new Vector3(radius * -Mathf.Sin(i * .9025f * Mathf.Deg2Rad), radius * Mathf.Cos(i * .9025f * Mathf.Deg2Rad), 0f);
+            cubes2[i].transform.eulerAngles = new Vector3(0f, 0f, i * .9025f);
             cubes2[i].transform.parent = transform;
             orPosition2[i] = cubes2[i].transform.position;
         }
@@ -55,10 +55,7 @@ public class One_CircleVisualizer : MonoBehaviour
 
         tmpSamples = samples;
         for (int i = 0 ; i < max ; i++) {
-            int j = ShuffleI(i, max);
-            samples[j] = tmpSamples[i];
-
-            float newLength = (samples[i] * power * j * .5f) * i * .001f;
+            float newLength = ((samples[i] + samples[i + 1]) * power) * (i * 2 + 1) * .01f;
 
             if (newLength < .1f) {
                 currentLength[i] = .3f;
@@ -76,21 +73,12 @@ public class One_CircleVisualizer : MonoBehaviour
             cubes2[i].transform.position = orPosition2[i] + cubes2[i].transform.up * currentLength[i] * yFactor;
             cubes2[i].transform.localScale = newScale;
 
-            float redColor = samples[i] * colorIntensity.x + colorMin.x * Mathf.Clamp(1f - samples[i], 0f, 1f);
-            float greenColor = samples[i] * colorIntensity.y + colorMin.y * Mathf.Clamp(1f - samples[i], 0f, 1f);
-            float blueColor = samples[i] * colorIntensity.z + colorMin.z * Mathf.Clamp(1f - samples[i], 0f, 1f);
-            Color newColor = new Color(Mathf.Clamp(redColor, 0f, colorPower), Mathf.Clamp(greenColor, 0f, colorPower), Mathf.Clamp(blueColor, 0f, colorPower), Mathf.Clamp(samples[i], .00005f, 1f));
+            float redColor = (samples[i] + samples[i + 1]) * colorIntensity.x + colorMin.x * Mathf.Clamp(1f - (samples[i] + samples[i + 1]), 0f, 1f);
+            float greenColor = (samples[i] + samples[i + 1]) * colorIntensity.y + colorMin.y * Mathf.Clamp(1f - (samples[i] + samples[i + 1]), 0f, 1f);
+            float blueColor = (samples[i] + samples[i + 1]) * colorIntensity.z + colorMin.z * Mathf.Clamp(1f - (samples[i] + samples[i + 1]), 0f, 1f);
+            Color newColor = new Color(Mathf.Clamp(redColor, 0f, colorPower), Mathf.Clamp(greenColor, 0f, colorPower), Mathf.Clamp(blueColor, 0f, colorPower), Mathf.Clamp((samples[i] + samples[i + 1]), .00005f, 1f));
             cubes[i].GetComponent<SpriteRenderer>().material.SetColor("_MainColor", newColor);
             cubes2[i].GetComponent<SpriteRenderer>().material.SetColor("_MainColor", newColor);
-        }
-    }
-
-    private int ShuffleI(int i, int maxI) {
-        if (i % 2 > 0) {
-            return i;
-        }
-        else {
-            return maxI - i;
         }
     }
 }
