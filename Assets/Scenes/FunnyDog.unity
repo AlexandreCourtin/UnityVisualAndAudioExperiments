@@ -922,7 +922,7 @@ Transform:
   - {fileID: 1317848813}
   m_Father: {fileID: 1373045440}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -10, y: 0, z: 0}
 --- !u!4 &85132150 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3744666802577677903, guid: 4402ab3a60da94b8ab55bb331d763864,
@@ -4417,7 +4417,7 @@ Transform:
   - {fileID: 1415772934}
   m_Father: {fileID: 1367690030}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45.000004, y: 0, z: 0}
 --- !u!4 &369226909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3744666802577677903, guid: 4402ab3a60da94b8ab55bb331d763864,
@@ -15295,6 +15295,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1367690030}
   - component: {fileID: 1367690031}
+  - component: {fileID: 1367690032}
   m_Layer: 0
   m_Name: Dog
   m_TagString: Untagged
@@ -15338,6 +15339,25 @@ MonoBehaviour:
   rotSpeed: 1000
   speed: 15
   distanceToBall: 4
+--- !u!95 &1367690032
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1367690029}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ecd47eca953c149a083701b5bf28bcae, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1368829497
 PrefabInstance:
   m_ObjectHideFlags: 0

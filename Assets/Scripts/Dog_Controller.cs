@@ -44,7 +44,6 @@ public class Dog_Controller : MonoBehaviour
         Vector3 targetPosition = new Vector3(target.x, transform.position.y, target.z);
         float t = Time.fixedDeltaTime * speed;
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, t);
-        // transform.position = Vector3.Lerp(transform.position, targetPosition, t);
     }
 
     private void DogLookAt(Vector3 target) {
