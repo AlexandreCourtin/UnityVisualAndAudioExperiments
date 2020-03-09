@@ -26,6 +26,6 @@ public class Leperv_Cube : MonoBehaviour
         }
 
         transform.position = orPosition + transform.up * (currentPower * .2f + .1f) * .5f;
-        transform.localScale = new Vector3(Mathf.Clamp(.8f - currentPower * .035f, 0f, 100f), currentPower * .2f + .1f, 1f);
+        transform.localScale = new Vector3(.2f, currentPower * .2f + .1f, 1f);
     }
 }
