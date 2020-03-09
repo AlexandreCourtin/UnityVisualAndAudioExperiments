@@ -16,7 +16,7 @@ public class Leperv_Skull : MonoBehaviour
     }
 
     void Update() {
-        float nextPower = (music.samples[sample]) * power;
+        float nextPower = (music.samples[1] + music.samples[2] + music.samples[3]) * power;
         if (nextPower > currentPower) {
             currentPower = nextPower;
         } else if (currentPower > 0f) {

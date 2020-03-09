@@ -20,7 +20,7 @@ public class Leperv_Eyes : MonoBehaviour
     }
 
     void Update() {
-        float nextPower = (music.samples[sample]) * power;
+        float nextPower = (music.samples[200] + music.samples[250] + music.samples[300]) * power;
         if (nextPower > currentPower) {
             currentPower = nextPower;
         } else if (currentPower > 0f) {
