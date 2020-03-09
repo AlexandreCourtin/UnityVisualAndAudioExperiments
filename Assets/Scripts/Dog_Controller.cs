@@ -30,20 +30,27 @@ public class Dog_Controller : MonoBehaviour
         } else if (!dogball.isControllingBall && Vector3.Distance(transform.position, ball.transform.position) <= distanceToBall && !hasBall) {
             hasBall = true;
             dogball.isInDogMouth = true;
-        } else if ((dogball.isControllingBall || hasBall) && Vector3.Distance(transform.position, Vector3.zero) < 1f) {
-            setRunAnimationState(false);
         } else if (!dogball.isControllingBall && Vector3.Distance(transform.position, ball.transform.position) > distanceToBall && !hasBall) {
             DogMovePosition(ball.transform.position);
             DogLookAt(ball.transform.position);
             setRunAnimationState(true);
         } else if (dogball.isControllingBall) {
-            DogMovePosition(Vector3.zero);
-            DogLookAt(ball.transform.position);
-            setRunAnimationState(true);
+            if (Vector3.Distance(transform.position, Vector3.zero) > 1f) {
+                DogMovePosition(Vector3.zero);
+                DogLookAt(Vector3.zero);
+                setRunAnimationState(true);
+            } else {
+                DogLookAt(ball.transform.position);
+                setRunAnimationState(false);
+            }
         } else if (hasBall) {
-            DogMovePosition(Vector3.zero);
-            DogLookAt(Camera.main.transform.position);
-            setRunAnimationState(true);
+            if (Vector3.Distance(transform.position, Vector3.zero) > 1f) {
+                DogMovePosition(Vector3.zero);
+                DogLookAt(Vector3.zero);
+                setRunAnimationState(true);
+            } else {
+                setRunAnimationState(false);
+            }
         }
     }
 
