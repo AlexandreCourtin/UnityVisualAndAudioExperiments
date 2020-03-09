@@ -11,33 +11,45 @@ public class Dog_Controller : MonoBehaviour
     Dog_Cursor cursor;
     GameObject ball;
     Dog_Ball dogball;
+    Animator dogAnimator;
     bool hasBall;
+    bool isRunning;
 
     void Start() {
         cursor = GameObject.Find("Camera").GetComponent<Dog_Cursor>();
         ball = GameObject.Find("DogBall");
         dogball = ball.GetComponent<Dog_Ball>();
+        dogAnimator = GetComponent<Animator>();
         hasBall = false;
+        isRunning = false;
     }
 
     void FixedUpdate() {
         if (hasBall && Vector3.Distance(transform.position, ball.transform.position) > distanceToBall) {
             hasBall = false;
-        }
-        else if (!dogball.isControllingBall && Vector3.Distance(transform.position, ball.transform.position) <= distanceToBall && !hasBall) {
+        } else if (!dogball.isControllingBall && Vector3.Distance(transform.position, ball.transform.position) <= distanceToBall && !hasBall) {
             hasBall = true;
             dogball.isInDogMouth = true;
-        }
-        else if (!dogball.isControllingBall && Vector3.Distance(transform.position, ball.transform.position) > distanceToBall && !hasBall) {
+        } else if ((dogball.isControllingBall || hasBall) && Vector3.Distance(transform.position, Vector3.zero) < 1f) {
+            setRunAnimationState(false);
+        } else if (!dogball.isControllingBall && Vector3.Distance(transform.position, ball.transform.position) > distanceToBall && !hasBall) {
             DogMovePosition(ball.transform.position);
             DogLookAt(ball.transform.position);
+            setRunAnimationState(true);
         } else if (dogball.isControllingBall) {
             DogMovePosition(Vector3.zero);
             DogLookAt(ball.transform.position);
+            setRunAnimationState(true);
         } else if (hasBall) {
             DogMovePosition(Vector3.zero);
             DogLookAt(Camera.main.transform.position);
+            setRunAnimationState(true);
         }
+    }
+
+    private void setRunAnimationState(bool b) {
+        isRunning = b;
+        dogAnimator.SetBool("isRunning", isRunning);
     }
 
     private void DogMovePosition(Vector3 target) {
