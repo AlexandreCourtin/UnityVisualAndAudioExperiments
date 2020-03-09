@@ -27,7 +27,7 @@ public class Leperv_Eyes : MonoBehaviour
             currentPower = Mathf.Clamp(currentPower - Time.deltaTime * fallOf, 0f, 1000f);
         }
 
-        leftEye.SetFloat("_Multiple", currentPower - .25f);
-        rightEye.SetFloat("_Multiple", currentPower - .25f);
+        leftEye.SetFloat("_Multiple", currentPower + .2f);
+        rightEye.SetFloat("_Multiple", currentPower + .2f);
     }
 }
