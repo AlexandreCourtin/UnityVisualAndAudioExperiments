@@ -11,30 +11,26 @@ public class Dog_Controller : MonoBehaviour
     Dog_Cursor cursor;
     GameObject ball;
     Dog_Ball dogball;
+    Rigidbody ballRb;
     Animator dogAnimator;
     bool hasBall;
     bool isRunning;
+    bool droppedBall;
 
     void Start() {
         cursor = GameObject.Find("Camera").GetComponent<Dog_Cursor>();
         ball = GameObject.Find("DogBall");
         dogball = ball.GetComponent<Dog_Ball>();
+        ballRb = ball.GetComponent<Rigidbody>();
         dogAnimator = GetComponent<Animator>();
         hasBall = false;
         isRunning = false;
+        droppedBall = false;
     }
 
     void FixedUpdate() {
-        if (hasBall && Vector3.Distance(transform.position, ball.transform.position) > distanceToBall) {
-            hasBall = false;
-        } else if (!dogball.isControllingBall && Vector3.Distance(transform.position, ball.transform.position) <= distanceToBall && !hasBall) {
-            hasBall = true;
-            dogball.isInDogMouth = true;
-        } else if (!dogball.isControllingBall && Vector3.Distance(transform.position, ball.transform.position) > distanceToBall && !hasBall) {
-            DogMovePosition(ball.transform.position);
-            DogLookAt(ball.transform.position);
-            setRunAnimationState(true);
-        } else if (dogball.isControllingBall) {
+        if (dogball.isControllingBall) {
+            droppedBall = false;
             if (Vector3.Distance(transform.position, Vector3.zero) > 1f) {
                 DogMovePosition(Vector3.zero);
                 DogLookAt(Vector3.zero);
@@ -43,13 +39,26 @@ public class Dog_Controller : MonoBehaviour
                 DogLookAt(ball.transform.position);
                 setRunAnimationState(false);
             }
-        } else if (hasBall) {
+        } else if (hasBall && Vector3.Distance(transform.position, ball.transform.position) > distanceToBall) {
+            hasBall = false;
+        } else if (!dogball.isControllingBall && Vector3.Distance(transform.position, ball.transform.position) <= distanceToBall && !hasBall) {
+            hasBall = true;
+            dogball.isInDogMouth = true;
+        } else if (!dogball.isControllingBall && Vector3.Distance(transform.position, ball.transform.position) > distanceToBall && !hasBall && !droppedBall) {
+            DogMovePosition(ball.transform.position);
+            DogLookAt(ball.transform.position);
+            setRunAnimationState(true);
+        } else if (hasBall && !droppedBall) {
             if (Vector3.Distance(transform.position, Vector3.zero) > 1f) {
                 DogMovePosition(Vector3.zero);
                 DogLookAt(Vector3.zero);
                 setRunAnimationState(true);
             } else {
                 setRunAnimationState(false);
+                droppedBall = true;
+                dogball.isInDogMouth = false;
+                ballRb.useGravity = true;
+                ballRb.AddForce(-transform.forward * 100f);
             }
         }
     }

@@ -29,12 +29,16 @@ public class Dog_Ball : MonoBehaviour
             isInDogMouth = false;
             ballRb.useGravity = false;
             ballRb.velocity = Vector3.zero;
-            transform.position = cursor.mousePosition;
+
+            float t = Time.fixedDeltaTime * 100f;
+            transform.position = Vector3.MoveTowards(transform.position, cursor.mousePosition, t);
         } else if (Input.GetMouseButtonUp(0)) {
             isControllingBall = false;
             ballRb.useGravity = true;
             ballRb.velocity = Vector3.zero;
-            ballRb.AddForce(Camera.main.transform.forward * 1000f + Vector3.up * 1000f);
+
+            Vector3 mouseDirection = (transform.position - Camera.main.transform.position).normalized;
+            ballRb.AddForce(mouseDirection * 1000f + Vector3.up * 1000f);
         }
     }
 }
