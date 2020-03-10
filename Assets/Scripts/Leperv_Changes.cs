@@ -20,6 +20,14 @@ public class Leperv_Changes : MonoBehaviour
         StartCoroutine(changeColorsRoutine());
     }
 
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.C)) {
+            actualColor += 1;
+            if (actualColor >= eyeAlbedo.Length) actualColor = 0;
+            changeColors();
+        }
+    }
+
     private void changeColors() {
         GameObject.Find("Left").GetComponent<MeshRenderer>().material.SetColor("_Albedo", eyeAlbedo[actualColor]);
         GameObject.Find("Left").GetComponent<MeshRenderer>().material.SetColor("_Emission", eyeEmission[actualColor]);
