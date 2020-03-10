@@ -8,7 +8,7 @@ public class Leperv_Camera : MonoBehaviour
         Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         if (Physics.Raycast(mouseRay, out hit, Mathf.Infinity)) {
-            transform.eulerAngles = new Vector3(-hit.point.y * .5f, hit.point.x * .5f, 0f);
+            GameObject.Find("Skull").transform.eulerAngles = new Vector3(hit.point.y * 1f - 30f, -hit.point.x * 1f, 0f);
         }
     }
 }
