@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 67346764}
   - component: {fileID: 67346763}
   m_Layer: 0
-  m_Name: Point Light (2)
+  m_Name: BackLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -149,8 +149,8 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.29396662, b: 0, a: 1}
-  m_Intensity: 20
+  m_Color: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
+  m_Intensity: 15
   m_Range: 20
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -273,7 +273,7 @@ GameObject:
   - component: {fileID: 109477212}
   - component: {fileID: 109477211}
   m_Layer: 0
-  m_Name: leperv_ambiance (1)
+  m_Name: leperv_ambiance2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -339,7 +339,10 @@ VisualEffect:
     m_Vector3f:
       m_Array: []
     m_Vector4f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 27.844257, y: 99.38823, z: 0, w: 0}
+        m_Name: Color
+        m_Overridden: 0
     m_Uint:
       m_Array: []
     m_Int:
@@ -1678,6 +1681,7 @@ GameObject:
   - component: {fileID: 2110227341}
   - component: {fileID: 2110227342}
   - component: {fileID: 2110227343}
+  - component: {fileID: 2110227344}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -1703,7 +1707,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.31132078, g: 0.13069598, b: 0.1323624, a: 0}
+  m_BackGroundColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1823,6 +1827,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85dd5a06c2524a6bbd0570e9151d993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2110227344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110227336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08e4ec4f8e1e34e538d413d7de036935, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actualColor: 5
+  eyeAlbedo:
+  - {r: 0.7529412, g: 0.21176471, b: 0.21176471, a: 0}
+  - {r: 0.16111916, g: 0.6320754, b: 0.12820399, a: 0}
+  - {r: 0.12941176, g: 0.19170281, b: 0.6313726, a: 0}
+  - {r: 0.6313726, g: 0.12941176, b: 0.27357346, a: 0}
+  - {r: 0.6313726, g: 0.48273546, b: 0.12941176, a: 0}
+  - {r: 0, g: 0, b: 0, a: 0}
+  eyeEmission:
+  - {r: 47.937256, g: 25.6, b: 18.07059, a: 0}
+  - {r: 10.415687, g: 23.968628, b: 9.035295, a: 0}
+  - {r: 18.07059, g: 25.09804, b: 47.937256, a: 0}
+  - {r: 23.450068, g: 14.250689, b: 30.24313, a: 0}
+  - {r: 23.968628, g: 17.317648, b: 11.294118, a: 0}
+  - {r: 27.471699, g: 10.147466, b: 9.977927, a: 0}
+  skullLight:
+  - {r: 1, g: 0.29396662, b: 0, a: 1}
+  - {r: 0.30829477, g: 0.754717, b: 0.16731933, a: 1}
+  - {r: 0.16862744, g: 0.3167801, b: 0.7529412, a: 1}
+  - {r: 0.7529412, g: 0.16862744, b: 0.7014189, a: 1}
+  - {r: 0.71694756, g: 0.7529412, b: 0.16862744, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
+  backLight:
+  - {r: 1, g: 0.29396662, b: 0, a: 1}
+  - {r: 0.053106308, g: 1, b: 0, a: 1}
+  - {r: 0, g: 0.28817677, b: 1, a: 1}
+  - {r: 1, g: 0, b: 0.5860157, a: 1}
+  - {r: 0.40602535, g: 0.7735849, b: 0, a: 1}
+  - {r: 0.028301895, g: 0.00013349982, b: 0.0006967463, a: 1}
+  particleColor:
+  - {r: 95.87451, g: 24.094118, b: 0, a: 0}
+  - {r: 0, g: 47.937256, b: 14.054902, a: 0}
+  - {r: 0, g: 49.69412, b: 95.87451, a: 0}
+  - {r: 47.937256, g: 0, b: 27.823172, a: 0}
+  - {r: 33.129414, g: 47.937256, b: 0, a: 0}
+  - {r: 64, g: 0, b: 1.8798523, a: 0}
+  backgroundColor:
+  - {r: 0.31132078, g: 0.13069598, b: 0.1323624, a: 0}
+  - {r: 0.027071366, g: 0.31132078, b: 0, a: 0}
+  - {r: 0, g: 0.31811577, b: 0.3962264, a: 0}
+  - {r: 0.2998309, g: 0.024875412, b: 0.4056604, a: 0}
+  - {r: 0.31132078, g: 0.30162582, b: 0.14244395, a: 0}
+  - {r: 0.3018868, g: 0.3018868, b: 0.3018868, a: 0}
 --- !u!1 &2112828644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,7 +1893,7 @@ GameObject:
   - component: {fileID: 2112828645}
   - component: {fileID: 2112828646}
   m_Layer: 0
-  m_Name: Point Light
+  m_Name: SkullLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1865,7 +1924,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.29396662, b: 0, a: 1}
+  m_Color: {r: 0.5377358, g: 0.5377358, b: 0.5377358, a: 1}
   m_Intensity: 11.89
   m_Range: 12
   m_SpotAngle: 30
