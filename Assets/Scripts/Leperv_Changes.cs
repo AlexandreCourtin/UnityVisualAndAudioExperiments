@@ -17,7 +17,7 @@ public class Leperv_Changes : MonoBehaviour
 
     void Start() {
         changeColors();
-        StartCoroutine(changeColorsRoutine());
+        // StartCoroutine(changeColorsRoutine());
     }
 
     void Update() {
