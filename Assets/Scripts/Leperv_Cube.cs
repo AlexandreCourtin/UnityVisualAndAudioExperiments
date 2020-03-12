@@ -22,10 +22,10 @@ public class Leperv_Cube : MonoBehaviour
         if (nextPower > currentPower) {
             currentPower = nextPower;
         } else if (currentPower > 0f) {
-            currentPower = Mathf.Clamp(currentPower - Time.deltaTime * currentPower * 2f, 0f, 1000f);
+            currentPower = Mathf.Clamp(currentPower - Time.deltaTime * currentPower * 3f, 0f, 1000f);
         }
 
-        transform.position = orPosition + transform.up * (currentPower * .2f + .1f) * .5f;
-        transform.localScale = new Vector3(.2f, currentPower * .2f + .1f, 1f);
+        transform.position = orPosition + transform.up * (currentPower * .1f) * .5f;
+        transform.localScale = new Vector3(1f, currentPower + 1f, 1f);
     }
 }
