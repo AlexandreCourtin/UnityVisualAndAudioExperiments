@@ -26,6 +26,11 @@ public class Leperv_Changes : MonoBehaviour
             if (actualColor >= eyeAlbedo.Length) actualColor = 0;
             changeColors();
         }
+        if (Input.GetKeyDown(KeyCode.X)) {
+            actualColor -= 1;
+            if (actualColor < 0) actualColor = eyeAlbedo.Length - 1;
+            changeColors();
+        }
     }
 
     private void changeColors() {
