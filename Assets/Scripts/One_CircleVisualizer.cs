@@ -7,7 +7,6 @@ public class One_CircleVisualizer : MonoBehaviour
 {
     public Material soundMat;
     public Sprite soundSprite;
-    public Vector3 colorIntensity;
     public Vector3 colorMin;
     public float yFactor = .5f;
     public float power = 10f;
@@ -71,9 +70,9 @@ public class One_CircleVisualizer : MonoBehaviour
             cubes2[i].transform.position = orPosition2[i] + cubes2[i].transform.up * currentLength[i] * yFactor;
             cubes2[i].transform.localScale = newScale;
 
-            float redColor = (samples[i] + samples[i + 1]) * colorIntensity.x + colorMin.x * Mathf.Clamp(1f - (samples[i] + samples[i + 1]), 0f, 1f);
-            float greenColor = (samples[i] + samples[i + 1]) * colorIntensity.y + colorMin.y * Mathf.Clamp(1f - (samples[i] + samples[i + 1]), 0f, 1f);
-            float blueColor = (samples[i] + samples[i + 1]) * colorIntensity.z + colorMin.z * Mathf.Clamp(1f - (samples[i] + samples[i + 1]), 0f, 1f);
+            float redColor = colorMin.x * Mathf.Clamp(1f - (samples[i] + samples[i + 1]), 0f, 1f);
+            float greenColor = colorMin.y * Mathf.Clamp(1f - (samples[i] + samples[i + 1]), 0f, 1f);
+            float blueColor = colorMin.z * Mathf.Clamp(1f - (samples[i] + samples[i + 1]), 0f, 1f);
             Color newColor = new Color(Mathf.Clamp(redColor, 0f, colorPower), Mathf.Clamp(greenColor, 0f, colorPower), Mathf.Clamp(blueColor, 0f, colorPower), Mathf.Clamp((samples[i] + samples[i + 1]), .00005f, 1f));
             cubes[i].GetComponent<SpriteRenderer>().material.SetColor("_MainColor", newColor);
             cubes2[i].GetComponent<SpriteRenderer>().material.SetColor("_MainColor", newColor);

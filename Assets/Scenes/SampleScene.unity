@@ -260,8 +260,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_RenderPostProcessing: 1
-  m_Antialiasing: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -319,7 +319,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundMat: {fileID: 2100000, guid: 48616e9e0a4ab4c6c8236fafa49c5404, type: 2}
   soundSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  colorIntensity: {x: 0, y: 0, z: 0}
   colorMin: {x: 0, y: 0, z: 0}
   yFactor: -0.5
   power: 0
@@ -457,60 +456,42 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0c1809d4a7b5349358accec957007025, type: 3}
   - {fileID: 8300000, guid: 4d982527aa0b5437da94dcc258e43b07, type: 3}
   - {fileID: 8300000, guid: 2882fc5eb727644aa8ebdbbc829be279, type: 3}
+  - {fileID: 8300000, guid: 448604ea8f77d461293264904d8cca88, type: 3}
   circles:
   - {fileID: 1724056002}
   - {fileID: 1724056006}
-  oneColorsIntensity:
-  - {x: 8000, y: 0, z: 0}
-  - {x: 8000, y: 0, z: 8000}
-  - {x: 0, y: 8000, z: 0}
-  - {x: 8000, y: 0, z: 0}
-  - {x: 0, y: 0, z: 6000}
-  twoColorsIntensity:
-  - {x: 0, y: 0, z: 8000}
-  - {x: 0, y: 8000, z: 8000}
-  - {x: 8000, y: 0, z: 0}
-  - {x: 6000, y: 2000, z: 2000}
-  - {x: 0, y: 6000, z: 0}
   oneColorsMin:
-  - {x: 7000, y: 1000, z: 1000}
-  - {x: 3000, y: 1000, z: 7000}
-  - {x: 300, y: 3000, z: 500}
+  - {x: 1000, y: 100, z: 100}
+  - {x: 100, y: 30, z: 1000}
+  - {x: 50, y: 1000, z: 75}
   - {x: 6000, y: 2000, z: 2000}
-  - {x: 200, y: 200, z: 400}
   twoColorsMin:
-  - {x: 1000, y: 1000, z: 7000}
-  - {x: 3000, y: 7000, z: 1000}
-  - {x: 3000, y: 1000, z: 500}
-  - {x: 0, y: 0, z: 0}
-  - {x: 200, y: 400, z: 200}
+  - {x: 100, y: 100, z: 1000}
+  - {x: 100, y: 1000, z: 30}
+  - {x: 1000, y: 150, z: 75}
+  - {x: 300, y: 100, z: 100}
+  inputPosition: {x: 0, y: 0}
   powersOne:
   - 20
   - 10
   - 25
-  - 20
   powersTwo:
   - 20
   - 20
   - 25
-  - 10
   yFactorsOne:
   - -0.5
   - -1
   - 0.15
-  - -1
   yFactorsTwo:
   - 0.25
   - 0
   - -0.15
-  - -0.5
   yFallOffOne:
   - 5
   - 1
   - 5
-  - 1
   yFallOffTwo:
-  - 5
   - 5
   - 5
   - 5
@@ -531,7 +512,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundMat: {fileID: 2100000, guid: 48616e9e0a4ab4c6c8236fafa49c5404, type: 2}
   soundSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  colorIntensity: {x: 0, y: 0, z: 0}
   colorMin: {x: 0, y: 0, z: 0}
   yFactor: 0.25
   power: 0

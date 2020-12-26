@@ -6,8 +6,6 @@ public class One_Controller : MonoBehaviour
 {
     public AudioClip[] musics;
     public One_CircleVisualizer[] circles;
-    public Vector3[] oneColorsIntensity;
-    public Vector3[] twoColorsIntensity;
     public Vector3[] oneColorsMin;
     public Vector3[] twoColorsMin;
     public Vector2 inputPosition;
@@ -88,12 +86,10 @@ public class One_Controller : MonoBehaviour
 
     private void changeColors() {
         actualColor += 1;
-        if (actualColor >= oneColorsIntensity.Length) {
+        if (actualColor >= oneColorsMin.Length) {
             actualColor = 0;
         }
-        circles[0].colorIntensity = oneColorsIntensity[actualColor];
         circles[0].colorMin = oneColorsMin[actualColor];
-        circles[1].colorIntensity = twoColorsIntensity[actualColor];
         circles[1].colorMin = twoColorsMin[actualColor];
     }
 
