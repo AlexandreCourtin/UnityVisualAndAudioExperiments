@@ -16,7 +16,6 @@ public class One_CircleVisualizer : MonoBehaviour
     public float radius = 4.5f;
 
     float[] samples = new float[512];
-    float[] tmpSamples = new float[512];
     GameObject[] cubes = new GameObject[200];
     GameObject[] cubes2 = new GameObject[200];
 
@@ -53,7 +52,6 @@ public class One_CircleVisualizer : MonoBehaviour
     void Update() {
         audioSource.GetSpectrumData(samples, 0, FFTWindow.Blackman);
 
-        tmpSamples = samples;
         for (int i = 0 ; i < max ; i++) {
             float newLength = ((samples[i] + samples[i + 1]) * power) * (i * 2 + 1) * .01f;
 
