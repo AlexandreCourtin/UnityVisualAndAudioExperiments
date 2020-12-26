@@ -21,9 +21,13 @@ public class One_Controller : MonoBehaviour
     public int actualPattern = 0;
 
     AudioSource audioSource;
+	bool touched;
+    bool hasTouched;
 
     void Start() {
         audioSource = GetComponent<AudioSource>();
+        touched = false;
+        hasTouched = false;
 
         if (musics.Length > 0) {
             actualMusic -= 1;
@@ -36,7 +40,17 @@ public class One_Controller : MonoBehaviour
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.M)) {
+        //Touch Gestion
+		touched = false;
+		if (touch() && !hasTouched) {
+			hasTouched = true;
+			touched = true;
+		}
+		else if (!touch() && hasTouched) {
+			hasTouched = false;
+		}
+
+        if (Input.GetKeyDown(KeyCode.M) || touched) {
             changeMusic();
         }
         if (Input.GetKeyDown(KeyCode.C)) {
@@ -46,6 +60,16 @@ public class One_Controller : MonoBehaviour
             changePattern();
         }
     }
+
+    private bool touch() {
+		if (Input.GetMouseButton(0)) {
+			return true;
+		}
+		for (int i = 0; i < Input.touchCount; i++) {
+			return true;
+		}
+		return false;
+	}
 
     private void changeMusic() {
         actualMusic += 1;
