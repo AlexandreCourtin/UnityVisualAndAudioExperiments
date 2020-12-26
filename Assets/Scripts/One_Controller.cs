@@ -10,6 +10,7 @@ public class One_Controller : MonoBehaviour
     public Vector3[] twoColorsIntensity;
     public Vector3[] oneColorsMin;
     public Vector3[] twoColorsMin;
+    public Vector2 inputPosition;
     public float[] powersOne;
     public float[] powersTwo;
     public float[] yFactorsOne;
@@ -50,22 +51,27 @@ public class One_Controller : MonoBehaviour
 			hasTouched = false;
 		}
 
-        if (Input.GetKeyDown(KeyCode.M) || touched) {
+        if (Input.GetKeyDown(KeyCode.M)
+            || (touched && inputPosition.x < Screen.width/2)) {
             changeMusic();
         }
-        if (Input.GetKeyDown(KeyCode.C)) {
+        if (Input.GetKeyDown(KeyCode.C)
+            || (touched && inputPosition.x >= Screen.width/2 && inputPosition.y >= Screen.height/2)) {
             changeColors();
         }
-        if (Input.GetKeyDown(KeyCode.P)) {
+        if (Input.GetKeyDown(KeyCode.P)
+            || (touched && inputPosition.x >= Screen.width/2 && inputPosition.y < Screen.height/2)) {
             changePattern();
         }
     }
 
     private bool touch() {
 		if (Input.GetMouseButton(0)) {
+            inputPosition = Input.mousePosition;
 			return true;
 		}
 		for (int i = 0; i < Input.touchCount; i++) {
+            inputPosition = Input.GetTouch(0).position;
 			return true;
 		}
 		return false;
